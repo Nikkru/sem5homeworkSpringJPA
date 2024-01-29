@@ -10,5 +10,8 @@ import java.util.List;
 
 @Repository("taskRepository")
 public interface TaskRepository extends JpaRepository<Task, Long> {
+
     List<Task> findByStatus(@Param("status")TaskStatus status);
+
+//    Task newTask addNewTask()
 }
