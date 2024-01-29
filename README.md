@@ -5,8 +5,10 @@ ____
 - [ ] Требуется реализовать следующие функции:
     - Добавление задачи. Подсказка метод в контроллере: @PostMapping public Task addTask(@RequestBody Task task)
     - Просмотр всех задач. Подсказка метод в контроллере: @GetMapping public List<Task> getAllTasks()
-    - Просмотр задач по статусу (например, "завершена", "в процессе", "не начата"). Подсказка метод в контроллере: @GetMapping("/status/{status}") public List<Task> getTasksByStatus(@PathVariable TaskStatus status)
-    - Изменение статуса задачи. Подсказка метод в контроллере: @PutMapping("/{id}") public Task updateTaskStatus(@PathVariable Long id, @RequestBody Task task)
+    - Просмотр задач по статусу (например, "завершена", "в процессе", "не начата"). 
+  Подсказка метод в контроллере: @GetMapping("/status/{status}") public List<Task> getTasksByStatus(@PathVariable TaskStatus status)
+    - Изменение статуса задачи. Подсказка метод в контроллере: @PutMapping("/{id}") public Task updateTaskStatus(@PathVariable Long id, 
+  @RequestBody Task task)
     - Удаление задачи. Подсказка метод в контроллере: @DeleteMapping("/{id}") public void deleteTask(@PathVariable Long id)
 - [ ] Репозитроий подсказка public interface TaskRepository extends JpaRepository<Task, Long>
 - [ ] Структура задачи(класс Task):
