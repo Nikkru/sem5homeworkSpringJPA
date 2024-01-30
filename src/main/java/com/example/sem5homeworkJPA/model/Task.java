@@ -2,10 +2,14 @@ package com.example.sem5homeworkJPA.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
 
+@Setter
+@Getter
 @Data
 @Entity
 public class Task {
@@ -30,5 +34,9 @@ public class Task {
     private LocalDateTime localDateTime;
 
     public Task() {
+    }
+
+    public void setStatus(TaskStatus status) {
+        this.status = status;
     }
 }

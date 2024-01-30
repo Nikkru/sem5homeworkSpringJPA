@@ -1,5 +1,6 @@
 package com.example.sem5homeworkJPA.service;
 
+import com.example.sem5homeworkJPA.exception.TaskNotFoundException;
 import com.example.sem5homeworkJPA.model.Task;
 import com.example.sem5homeworkJPA.model.TaskStatus;
 import com.example.sem5homeworkJPA.repository.TaskRepository;
@@ -40,5 +41,13 @@ public class TaskService implements ITask{
     public Task saveNewTask(Task task) {
         taskRepository.save(task);
         return task;
+    }
+
+    @Override
+    public Task updateTaskStatus(long id, TaskStatus status){
+        Task updatedTask = taskRepository.findById(id).orElseThrow();
+        updatedTask.setStatus(status);
+        taskRepository.save(updatedTask);
+        return updatedTask;
     }
 }

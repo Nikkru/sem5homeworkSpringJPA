@@ -16,4 +16,5 @@ public interface ITask {
                  TaskStatus taskStatus,
                  LocalDateTime localDateTime);
     Task saveNewTask(Task task);
+    Task updateTaskStatus(long id, TaskStatus status);
 }
