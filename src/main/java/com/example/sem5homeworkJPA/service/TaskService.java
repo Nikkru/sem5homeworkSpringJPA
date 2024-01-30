@@ -45,7 +45,7 @@ public class TaskService implements ITask{
 
     @Override
     public Task updateTaskStatus(long id, TaskStatus status){
-        Task updatedTask = taskRepository.findById(id).orElseThrow();
+        Task updatedTask = taskRepository.findById(id).orElseThrow(()-> new TaskNotFoundException(id));
         updatedTask.setStatus(status);
         taskRepository.save(updatedTask);
         return updatedTask;
