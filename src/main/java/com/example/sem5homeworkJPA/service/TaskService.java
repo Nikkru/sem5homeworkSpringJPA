@@ -5,7 +5,10 @@ import com.example.sem5homeworkJPA.model.Task;
 import com.example.sem5homeworkJPA.model.TaskStatus;
 import com.example.sem5homeworkJPA.repository.TaskRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -45,7 +48,10 @@ public class TaskService implements ITask{
 
     @Override
     public Task updateTaskStatus(long id, TaskStatus status){
-        Task updatedTask = taskRepository.findById(id).orElseThrow(()-> new TaskNotFoundException(id));
+        Task updatedTask = taskRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        String.format("User with id %d not found", id)));
         updatedTask.setStatus(status);
         taskRepository.save(updatedTask);
         return updatedTask;
