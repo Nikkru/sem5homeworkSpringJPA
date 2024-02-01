@@ -8,8 +8,6 @@ import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
 
-@Setter
-@Getter
 @Data
 @Entity
 public class Task {
@@ -24,6 +22,7 @@ public class Task {
     @Column
     private String description;
 
+    @Setter
     @Column
     @Enumerated(EnumType.STRING)
     private TaskStatus status;
@@ -31,12 +30,9 @@ public class Task {
     @Column(name = "date_created")
     @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime localDateTime;
+    private LocalDateTime localDateTime = LocalDateTime.now();
 
     public Task() {
     }
 
-    public void setStatus(TaskStatus status) {
-        this.status = status;
-    }
 }
